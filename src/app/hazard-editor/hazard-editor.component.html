@@ -1,0 +1,18 @@
+<div *ngIf="hazard">
+    <div>
+      <span>ID: </span>{{hazard.id}}
+    </div>
+    <div>
+      <span>Description: </span>{{hazard.description}}
+    </div>
+    <div>
+        <label>Title:
+            <input [(ngModel)]="hazard.title" placeholder="title">
+        </label>
+    </div>
+    <div>
+        <label>Description:
+            <textarea ref-textarea rows="4" [(ngModel)]="hazard.description" placeholder="hazard description"></textarea>
+        </label>
+    </div>
+</div>

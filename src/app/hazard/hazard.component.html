@@ -1,0 +1,11 @@
+<h2>Hazard List</h2>
+<ul class="hazards">
+    <li *ngFor="let hazard of hazards"
+        [class.selected]="hazard === selectedHazard"
+        (click)="onSelect(hazard)">
+        <span class="badge">{{hazard.id}}</span> {{hazard.title}}
+        <div>{{hazard.description}}</div>
+    </li>
+</ul>
+
+<app-hazard-editor [hazard]="selectedHazard"></app-hazard-editor>
