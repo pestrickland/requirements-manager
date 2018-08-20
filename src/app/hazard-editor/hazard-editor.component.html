@@ -15,4 +15,10 @@
             <textarea ref-textarea rows="4" [(ngModel)]="hazard.description" placeholder="hazard description"></textarea>
         </label>
     </div>
+    <div>
+        <span>Linked Causes: </span>
+        <ul class="causes">
+            <li *ngFor="let cause of hazard.linkedCauses">{{cause}}</li>
+        </ul>
+    </div>
 </div>

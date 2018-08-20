@@ -1,6 +1,5 @@
-export class Hazard {
+export class Cause {
     id: number;
     title: string;
     description: string;
-    linkedCauses: string[];
 }
