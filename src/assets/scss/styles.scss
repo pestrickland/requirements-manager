@@ -1,0 +1,9 @@
+/* src/assets/scss/styles.scss */
+// partials
+// @import 'partials/layout.vars';
+// @import 'partials/responsive.partial';
+
+// global styles
+// @import 'base';
+@import '~normalize.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
