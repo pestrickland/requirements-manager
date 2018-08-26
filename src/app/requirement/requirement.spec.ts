@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HazardEditorComponent } from './hazard-editor.component';
+import { RequirementComponent } from './hazard.component';
 
-describe('HazardEditorComponent', () => {
-  let component: HazardEditorComponent;
-  let fixture: ComponentFixture<HazardEditorComponent>;
+describe('RequirementComponent', () => {
+  let component: RequirementComponent;
+  let fixture: ComponentFixture<RequirementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HazardEditorComponent ]
+      declarations: [ RequirementComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HazardEditorComponent);
+    fixture = TestBed.createComponent(RequirementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

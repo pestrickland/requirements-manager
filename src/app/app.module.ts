@@ -1,28 +1,28 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // NgModel lives here.
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { HazardComponent } from './hazard/hazard.component';
-import { HazardEditorComponent } from './hazard-editor/hazard-editor.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { RequirementComponent } from './requirement/requirement.component';
+import { RequirementEditorComponent } from './requirement-editor/requirement-editor.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HazardComponent,
-    HazardEditorComponent
+    RequirementComponent,
+    RequirementEditorComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-
+    AngularFireModule.initializeApp(environment.firebase, 'Requirements Manager'),
+    AngularFirestoreModule,
     FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    AppRoutingModule
   ],
   providers: [
     Title

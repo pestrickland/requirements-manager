@@ -1,0 +1,11 @@
+<h2>Requirement List</h2>
+<ul class="requirements">
+    <li *ngFor="let requirement of requirements"
+        [class.selected]="requirement === selectedRequirement"
+        (click)="onSelect(requirement)">
+        <span class="badge">{{requirement.data}}</span>
+        <div>{{requirement.description}}</div>
+    </li>
+</ul>
+
+<app-requirement-editor [requirement]="selectedRequirement"></app-requirement-editor>
