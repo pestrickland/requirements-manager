@@ -19,7 +19,11 @@ export class RequirementService {
     this.itemDoc = db.doc<Item>('requirements/1');
   }
 
-  getRequirements(): Observable<Requirement[]> {
-      return this.items;
+  // getRequirements(): Observable<Requirement[]> {
+      // return this.items;
+  // }
+
+  getRequirements(): Requirement[] {
+    return REQUIREMENTS;
   }
 }

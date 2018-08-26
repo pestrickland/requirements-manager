@@ -23,7 +23,6 @@ export class RequirementComponent implements OnInit {
   }
 
   getRequirements(): void {
-    this.requirementService.getRequirements()
-    .subscribe(requirements => this.requirements = requirements);
+    this.requirements = this.requirementService.getRequirements();
   }
 }
