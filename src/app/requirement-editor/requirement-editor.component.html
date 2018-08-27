@@ -3,12 +3,12 @@
       <span>ID: </span>{{requirement.id}}
     </div>
     <div>
-      <span>Description: </span>{{requirement.description}}
+      <span>Type: </span>{{requirement.type | titlecase }}
     </div>
     <div>
         <label>Description:
             <textarea ref-textarea rows="4" [(ngModel)]="requirement.description" placeholder="requirement description"></textarea>
         </label>
     </div>
-
+    <button (click)="goBack()">Go back</button>
 </div>

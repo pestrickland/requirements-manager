@@ -1,6 +1,7 @@
 export class Requirement {
     id: number;
-    title: string;
+    // title: string;
     description: string;
-    linkedCauses: string[];
+    phase: string;
+    type: string;
 }

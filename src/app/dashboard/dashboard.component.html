@@ -1,0 +1,8 @@
+<h3>Requirements</h3>
+<div>
+    <a *ngFor="let requirement of requirements" routerLink="/detail/{{requirement.id}}">
+        <div>
+            <h4>{{requirement.description}}</h4>
+        </div>
+    </a>
+</div>

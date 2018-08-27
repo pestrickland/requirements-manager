@@ -1,0 +1,9 @@
+<h2>Requirement List</h2>
+<ul class="requirements">
+    <li *ngFor="let requirement of requirements">
+        <a routerLink="/detail/{{requirement.id}}">
+        <span class="badge">{{requirement.id}}</span>
+        <div>{{requirement.description}}</div>
+    </a>
+    </li>
+</ul>
