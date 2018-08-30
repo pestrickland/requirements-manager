@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Requirement } from './requirement';
-import { REQUIREMENTS } from './example-requirements';
 import { Observable, of } from 'rxjs';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 
-// export interface Item { name: string; }
+export interface Requirement { description: string;
+                               type: string;
+                               phase: string;
+                               }
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequirementService {
-  // private itemDoc: AngularFirestoreDocument<Item>;
-  // items: Observable<any[]>;
+  private itemCollection: AngularFirestoreCollection<Requirement>;
+  items: Observable<Requirement[]>;
 
   // constructor(private db: AngularFirestore) {
     // this.items = db.collection('requirements').valueChanges();
@@ -25,11 +27,22 @@ export class RequirementService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) {}
+    private messageService: MessageService,
+    private db: AngularFirestore) {}
 
   getRequirements(): Observable<Requirement[]> {
     this.messageService.add('Requirements fetched.');
-    // return of(REQUIREMENTS);
+    
+    this.itemCollection = this.db.collection('requirements');
+    this.items = this.itemCollection.valueChanges();
+    
+    
+    // Hack in the firestore code.
+    return this.items
+      .pipe(
+        tap(requirements => this.log('Fetched requirements')),
+        catchError(this.handleError('getRequirements', [])));
+    
     return this.http.get<Requirement[]>(this.requirementsUrl)
       .pipe(
         tap(requirements => this.log('Fetched requirements')),
