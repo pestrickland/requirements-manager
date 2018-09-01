@@ -1,0 +1,11 @@
+<div id="search-component">
+    <h4>Requirement Search</h4>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+    <ul class="search-result">
+        <li *ngFor="let requirement of requirements$ | async" >
+            <a routerLink="/detail/{{requirement.id}}">
+                <div>{{requirement.description}}</div>
+            </a>
+        </li>
+    </ul>
+</div>

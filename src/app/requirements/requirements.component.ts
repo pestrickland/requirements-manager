@@ -20,4 +20,18 @@ export class RequirementsComponent implements OnInit {
     this.requirementService.getRequirements()
         .subscribe(requirements => this.requirements = requirements);
   }
+
+  add(description: string): void {
+    description = description.trim();
+    if (!description) { return; }
+    this.requirementService.addRequirement({ description } as Requirement)
+        .subscribe(requirement => {
+          this.requirements.push(requirement);
+        });
+  }
+
+  delete(requirement: Requirement): void {
+    this.requirements = this.requirements.filter(r => r !== requirement);
+    this.requirementService.deleteRequirement(requirement).subscribe();
+  }
 }

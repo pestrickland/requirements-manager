@@ -31,4 +31,9 @@ export class RequirementEditorComponent implements OnInit {
   goBack(): void {
       this.location.back();
   }
+
+  save(): void {
+    this.requirementService.updateRequirement(this.requirement)
+        .subscribe(() => this.goBack());
+  }
 }

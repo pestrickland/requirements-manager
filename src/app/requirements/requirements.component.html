@@ -1,9 +1,19 @@
 <h2>Requirement List</h2>
+<div>
+    <label>Requirement description:
+        <input #requirementDesc />
+    </label>
+    <button (click)="add(requirementDesc.value); requirementDesc.value=''">
+        add
+    </button>
+</div>
 <ul class="requirements">
     <li *ngFor="let requirement of requirements">
         <a routerLink="/detail/{{requirement.id}}">
         <span class="badge">{{requirement.id}}</span>
         <div>{{requirement.description}}</div>
     </a>
+    <button class="delete" title="Delete Requirement"
+        (click)="delete(requirement)">x</button>
     </li>
 </ul>
