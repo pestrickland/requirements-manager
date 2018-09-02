@@ -16,8 +16,8 @@ export class DashboardComponent implements OnInit {
       this.getRequirements();
   }
 
-  getRequirements(): void {
-      this.requirementService.getRequirements()
-          .subscribe(requirements => this.requirements = requirements.slice(1,3));
+  getRequirements() {
+      this.requirementService.getFSRequirements()
+          .subscribe(requirements => this.requirements = requirements.slice(0,3));
   }
 }

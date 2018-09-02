@@ -28,7 +28,7 @@ export class RequirementService {
     }
     
   getFSRequirements() {
-    return this.requirementsList;
+    return this.requirementsList.valueChanges();
   }
   
   addFSRequirement(requirement) {
