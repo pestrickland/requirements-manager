@@ -23,7 +23,7 @@ export class RequirementEditorComponent implements OnInit {
   }
 
   getRequirement(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
+      const id = this.route.snapshot.paramMap.get('id');
       this.requirementService.getRequirement(id)
           .subscribe(requirement => this.requirement = requirement);
   }

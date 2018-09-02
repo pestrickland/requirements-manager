@@ -1,6 +1,5 @@
-export class Requirement {
-    id: number;
-    // title: string;
+export interface Requirement {
+    id: string;
     description: string;
     phase: string;
     type: string;
