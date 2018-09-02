@@ -17,6 +17,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { RequirementSearchComponent } from './requirement-search/requirement-search.component';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     RequirementsComponent,
@@ -25,6 +26,7 @@ import { RequirementSearchComponent } from './requirement-search/requirement-sea
     DashboardComponent,
     RequirementSearchComponent
   ],
+  
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'Requirements Manager'),
@@ -39,9 +41,11 @@ import { RequirementSearchComponent } from './requirement-search/requirement-sea
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
+  
   providers: [
     Title
     ],
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }

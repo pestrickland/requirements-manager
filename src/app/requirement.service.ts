@@ -6,13 +6,7 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
-// export interface Requirement { description: string;
-//                                type: string;
-//                                phase: string;
-//                                id: string;
-//                                }
-  const httpOptions = {
+const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
@@ -20,32 +14,41 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RequirementService {
-  private itemCollection: AngularFirestoreCollection<Requirement>;
-  items: Observable<Requirement[]>;
-
-  // constructor(private db: AngularFirestore) {
-    // this.items = db.collection('requirements').valueChanges();
-    // this.itemDoc = db.doc<Item>('requirements/1');
-  // }
+  requirementsList: AngularFirestoreCollection<Requirement>;
+  private requirementDoc: AngularFirestoreDocument<Requirement>;
   private requirementsUrl = 'api/requirements';  // URL to web API.
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private db: AngularFirestore) {}
+    private db: AngularFirestore) {
+      
+      this.requirementsList = this.db.collection('requirements');
+      
+    }
+    
+  getFSRequirements() {
+    return this.requirementsList;
+  }
+  
+  addFSRequirement(requirement) {
+    this.requirementsList.add(requirement);
+  }
+  
+  updateFSRequirement(update, id) {
+    console.log(`Text to send: ${update}`);
+    console.log(`Id: ${id}`);
+    this.requirementDoc = this.db.doc<Requirement>(`requirements/${id}`);
+    this.requirementDoc.update(update);
+  }
+  
+  deleteFSRequirement(id) {
+    this.requirementDoc = this.db.doc<Requirement>(`requirements/${id}`);
+    this.requirementDoc.delete();
+  }
 
   getRequirements(): Observable<Requirement[]> {
     this.messageService.add('Requirements fetched.');
-
-    this.itemCollection = this.db.collection('requirements');
-    this.items = this.itemCollection.valueChanges();
-
-
-    // Hack in the firestore code.
-    // return this.items
-    //   .pipe(
-    //     tap(requirements => this.log('Fetched requirements')),
-    //     catchError(this.handleError('getRequirements', [])));
 
     return this.http.get<Requirement[]>(this.requirementsUrl)
       .pipe(
@@ -55,7 +58,7 @@ export class RequirementService {
   }
 
   // GET requirement by id. Will 404 if id not found.
-  getRequirement(id: number): Observable<Requirement> {
+  getRequirement(id: string): Observable<Requirement> {
     const url = `${this.requirementsUrl}/${id}`;
     return this.http.get<Requirement>(url).pipe(
       tap(_ => this.log(`Fetched Requirement id=${id}`)),
