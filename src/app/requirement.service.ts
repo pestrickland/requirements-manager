@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Requirement } from './requirement';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { MessageService } from './message.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Requirement } from './requirement';
+import { MessageService } from './message.service';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    // headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
 @Injectable({
@@ -16,45 +16,39 @@ const httpOptions = {
 export class RequirementService {
   requirementsList: AngularFirestoreCollection<Requirement>;
   private requirementDoc: AngularFirestoreDocument<Requirement>;
-  private requirementsUrl = 'api/requirements';  // URL to web API.
+  // private requirementsUrl = 'api/requirements';  // URL to web API.
 
   constructor(
-    private http: HttpClient,
+    // private http: HttpClient,
     private messageService: MessageService,
     private db: AngularFirestore) {
-      
+
       this.requirementsList = this.db.collection('requirements');
-      
+
     }
-    
-  getFSRequirements() {
-    return this.requirementsList.valueChanges();
+
+  getRequirements(): Observable<Requirement[]> {
+    return this.requirementsList.valueChanges()
+      .pipe(
+        tap(requirements => this.log('Fetched requirements from Firestore.')),
+        catchError(this.handleError('getRequirements', []))
+      );
   }
-  
+
   addFSRequirement(requirement) {
     this.requirementsList.add(requirement);
   }
-  
+
   updateFSRequirement(update, id) {
     console.log(`Text to send: ${update}`);
     console.log(`Id: ${id}`);
     this.requirementDoc = this.db.doc<Requirement>(`requirements/${id}`);
     this.requirementDoc.update(update);
   }
-  
+
   deleteFSRequirement(id) {
     this.requirementDoc = this.db.doc<Requirement>(`requirements/${id}`);
     this.requirementDoc.delete();
-  }
-
-  getRequirements(): Observable<Requirement[]> {
-    this.messageService.add('Requirements fetched.');
-
-    return this.http.get<Requirement[]>(this.requirementsUrl)
-      .pipe(
-        tap(requirements => this.log('Fetched requirements')),
-        catchError(this.handleError('getRequirements', []))
-      );
   }
 
   // GET requirement by id. Will 404 if id not found.
