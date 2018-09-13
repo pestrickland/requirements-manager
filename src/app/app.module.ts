@@ -39,7 +39,8 @@ import { RequirementSearchComponent } from './requirement-search/requirement-sea
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    MaterialModule
   ],
   
   providers: [

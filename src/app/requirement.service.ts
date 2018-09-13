@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Requirement } from './requirement';
@@ -16,10 +16,10 @@ const httpOptions = {
 export class RequirementService {
   requirementsList: AngularFirestoreCollection<Requirement>;
   private requirementDoc: AngularFirestoreDocument<Requirement>;
-  // private requirementsUrl = 'api/requirements';  // URL to web API.
+  private requirementsUrl = 'api/requirements';  // URL to web API.
 
   constructor(
-    // private http: HttpClient,
+    private http: HttpClient,
     private messageService: MessageService,
     private db: AngularFirestore) {
 
@@ -35,9 +35,26 @@ export class RequirementService {
       );
   }
 
-  addFSRequirement(requirement) {
-    this.requirementsList.add(requirement);
+  addFSRequirement(requirement: Requirement): Promise<any> {
+    const id = this.db.createId();
+    const description = requirement.description;
+    const req: Requirement = { id, description };
+    return this.requirementsList.doc(id).set(req)
+    .then(
+        _ => this.log(`Added requirement "${req.description}" with id=${req.id}`),
+        catchError(this.handleError<any>('addRequirement'))
+        );
   }
+  
+  // addFSRequirement2(requirement: Requirement) {
+  //   this.requirementsList.snapshotChanges()
+  //     .pipe(
+  //       map(actions => actions.map( a => {
+  //         const data = a.payload.doc.data() as Requirement;
+  //         const id = a.payload.doc.id;
+  //         return { id, ...data };
+  //       })))
+  // }
 
   updateFSRequirement(update, id) {
     console.log(`Text to send: ${update}`);

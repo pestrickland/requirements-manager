@@ -55,7 +55,7 @@ export class RequirementsComponent implements OnInit {
       console.log(this.myReq);
       if (!this.editMode) {
          console.log(req);
-         this.requirementService.addFSRequirement(req);
+         this.requirementService.addFSRequirement(req as Requirement);
       } else {
          //Get the req id
          let reqId = this.reqToEdit.id;
