@@ -1,3 +1,24 @@
-<p>
-  requirements-dashboard works!
-</p>
+<section>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    New requirement
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <input matInput placeholder="Requirement Title" [(ngModel)]="title">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Requirement Description" [(ngModel)]="description" rows="5"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Phase" [(ngModel)]="phase">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Type" [(ngModel)]="type">
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="createRequirement()" [disabled]="!description">{{buttonText}}</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>

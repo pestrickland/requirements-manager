@@ -1,3 +1,6 @@
-<p>
-  requirements-detail works!
-</p>
+<div *ngIf="requirement">
+    <h3>Title</h3>
+    <p>{{requirement.description}}</p>
+    <p>{{requirement.phase}}</p>
+    <p>{{requirement.type}}</p>
+</div>
