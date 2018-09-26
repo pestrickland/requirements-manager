@@ -8,7 +8,7 @@
             </mat-expansion-panel-header>
             <div>
                 <input type="file" id="file" name="file" (change)="uploadImage($event)">
-                <div [hidden]="!uploadPercent">                
+                <div [hidden]="!uploadPercent">
                     <mat-progress-bar mode="determinate" value="{{uploadPercent | async }}"></mat-progress-bar>
                 </div>
                 <div [hidden]="!image">

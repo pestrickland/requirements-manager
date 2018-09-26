@@ -10,9 +10,14 @@ section {
 mat-card {
     margin: 10px 0;
     max-width: 700px;
-    
+
 }
 
 img {
     width: 100%;
+}
+
+mat-content-card:focus {
+    outline: none;
+    border: 0;
 }

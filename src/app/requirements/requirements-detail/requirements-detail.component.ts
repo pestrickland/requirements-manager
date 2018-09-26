@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequirementService } from '../requirement.service';
 import { Requirement } from '../requirement';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-requirements-detail',
@@ -9,22 +10,40 @@ import { Requirement } from '../requirement';
   styleUrls: ['./requirements-detail.component.scss']
 })
 export class RequirementsDetailComponent implements OnInit {
-  
+
   requirement: Requirement
+  editing: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private requirementService: RequirementService
+    private router: Router,
+    private requirementService: RequirementService,
+    public auth: AuthService,
     ) { }
 
   ngOnInit() {
     this.getRequirement()
     console.log(this)
   }
-  
+
   getRequirement() {
     const id = this.route.snapshot.paramMap.get('id');
     return this.requirementService.getRequirementData(id).subscribe(data => this.requirement = data)
   }
 
+  updateRequirement() {
+    const formData = {
+      title: this.requirement.title,
+      description: this.requirement.description,
+    }
+    const id = this.route.snapshot.paramMap.get('id');
+    this.requirementService.update(id, formData);
+    this.editing = false;
+  }
+
+  delete() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.requirementService.delete(id);
+    this.router.navigate(["/reqs"])
+  }
 }

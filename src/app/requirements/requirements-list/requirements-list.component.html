@@ -3,7 +3,7 @@
         <mat-card-content routerLink="{{requirement.id}}">
             <img src="{{requirement.image}}" alt="{{requirement.title}}">
             <h2>{{requirement.title}}</h2>
-            <p><small>Created by {{requirement.author}} &bull; on {{requirement.created}}</small></p>
+            <p><small>Created by {{requirement.author}} &bull; on {{requirement.created.toDate() | date: "fullDate"}}</small></p>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="auth.currentUserId === requirement.authorId">
             <button mat-icon-button (click)="delete(requirement.id)">
