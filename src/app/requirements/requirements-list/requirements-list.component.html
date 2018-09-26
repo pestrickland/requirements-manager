@@ -1,10 +1,19 @@
-
-<h2>Requirements List</h2>
-<div *ngFor="let requirement of requirements | async">
-    <h2 routerLink="{{requirement.id}}">{{requirement.id}}</h2>
-    <p>{{requirement.description}}</p>
-</div>
-
+<section>
+    <mat-card *ngFor="let requirement of requirements | async">
+        <mat-card-content routerLink="{{requirement.id}}">
+            <img src="{{requirement.image}}" alt="{{requirement.title}}">
+            <h2>{{requirement.title}}</h2>
+            <p><small>Created by {{requirement.author}} &bull; on {{requirement.created}}</small></p>
+        </mat-card-content>
+        <mat-card-actions align="end" *ngIf="auth.currentUserId === requirement.authorId">
+            <button mat-icon-button (click)="delete(requirement.id)">
+                <mat-icon>
+                    delete
+                </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</section>
 
 
 <!--<div>-->
