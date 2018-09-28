@@ -1,39 +1,45 @@
 <ng-container *ngIf="requirement">
     <div [hidden]="editing">
         <mat-card>
-        <img [hidden]="!requirement.image" src="{{requirement.image}}" alt="{{requirement.title}}">
-        <p>Created by {{requirement.author}} &bull; {{requirement.created.toDate() | date: 'mediumDate'}}</p>
-        <mat-card-content>
-            <h2>{{requirement.title}}</h2>
-            <p>{{requirement.description}}</p>
-        </mat-card-content>
-        <mat-card-actions align="end" *ngIf="auth.currentUserId === requirement.authorId">
-            <button mat-icon-button (click)="editing=true">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="delete()">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </mat-card-actions>
-    </mat-card>
-</div>
-<div [hidden]="!editing">
-    <mat-card>
-        <h2>Edit Requirement</h2>
-        <mat-form-field>
-            <input matInput placeholder="Requirement Title" [(ngModel)]="requirement.title">
-        </mat-form-field>
-        <mat-form-field>
-            <textarea matInput placeholder="Requirement Description" [(ngModel)]="requirement.description" rows="5"></textarea>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Phase" [(ngModel)]="requirement.phase">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Type" [(ngModel)]="requirement.type">
-        </mat-form-field>
-        <button mat-raised-button color="accent" (click)="updateRequirement()">Save</button>
-        <button mat-button (click)="editing=false">Cancel</button>
-    </mat-card>
-</div>
+            <mat-card-title>{{requirement.title}}</mat-card-title>
+            <img [hidden]="!requirement.image" src="{{requirement.image}}" alt="{{requirement.title}}">
+            <mat-card-content>
+                <p>{{requirement.description}}</p>
+                <mat-chip-list>
+                    <mat-chip>{{requirement.phase}}</mat-chip>
+                    <mat-chip>{{requirement.type}}</mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+            <mat-card-footer>
+                <p>Created by {{requirement.author}} &bull; {{requirement.created.toDate() | date: 'mediumDate'}}</p>
+            </mat-card-footer>
+            <mat-card-actions align="end" *ngIf="auth.currentUserId === requirement.authorId">
+                <button mat-icon-button (click)="editing=true">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="delete()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div [hidden]="!editing">
+        <mat-card>
+            <h2>Edit Requirement</h2>
+            <mat-form-field>
+                <input matInput placeholder="Requirement Title" [(ngModel)]="requirement.title">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Requirement Description" [(ngModel)]="requirement.description" rows="5"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Phase" [(ngModel)]="requirement.phase">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Type" [(ngModel)]="requirement.type">
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="updateRequirement()">Save</button>
+            <button mat-button (click)="editing=false">Cancel</button>
+        </mat-card>
+    </div>
 </ng-container>

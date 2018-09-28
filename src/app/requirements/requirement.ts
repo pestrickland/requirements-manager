@@ -5,6 +5,6 @@ export class Requirement {
     type?: string;
     author?: string;
     authorId: string;
-    created: Date;
-    title: string;
+    created?: Date;
+    title?: string;
 }

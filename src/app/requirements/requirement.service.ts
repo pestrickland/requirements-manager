@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, 
-         AngularFirestoreCollection, 
+import { AngularFirestore,
+         AngularFirestoreCollection,
          AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Requirement } from './requirement';
 import { map } from 'rxjs/operators';
@@ -14,11 +14,11 @@ export class RequirementService {
   requirementDoc: AngularFirestoreDocument<Requirement>;
 
   constructor(private afs: AngularFirestore) {
-    this.requirementsCollection = this.afs.collection('requirements') //, ref => 
-      //ref.orderBy('published', 'desc'))
-    
+    this.requirementsCollection = this.afs.collection('requirements', ref =>
+      ref.orderBy('title', 'asc'))
+
   }
-  
+
   getRequirements() {
     return this.requirementsCollection.snapshotChanges()
     .pipe(map(actions => {
@@ -29,23 +29,23 @@ export class RequirementService {
       });
     }));
   }
-  
+
   getRequirementData(id: string) {
     this.requirementDoc = this.afs.doc<Requirement>(`requirements/${id}`)
     return this.requirementDoc.valueChanges()
   }
-  
+
   create(data: Requirement) {
     this.requirementsCollection.add(data);
   }
-  
+
   getRequirement(id: string) {
     return this.afs.doc<Requirement>(`requirements/${id}`)
   }
   update(id: string, formData) {
     return this.getRequirement(id).update(formData);
   }
-  
+
   delete(id: string) {
     return this.getRequirement(id).delete();
   }
