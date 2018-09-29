@@ -19,6 +19,7 @@ export class RequirementsDashboardComponent implements OnInit {
   buttonText = 'Create';
   uploadPercent: Observable<number>;
   downloadUrl: Observable<string>;
+  id: string;
   image: string = null;
 
   constructor(private auth: AuthService,
@@ -33,6 +34,7 @@ export class RequirementsDashboardComponent implements OnInit {
       author: this.auth.authState.displayName || this.auth.authState.email,
       authorId: this.auth.currentUserId,
       description: this.description,
+      id: this.id,
       type: this.type,
       phase: this.phase,
       created: new Date,
