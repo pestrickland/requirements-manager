@@ -1,35 +1,22 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // NgModel lives here.
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 import { RequirementsModule } from './requirements/requirements.module';
-// import { RequirementsComponent } from './requirements/requirements.component';
-// import { RequirementEditorComponent } from './requirement-editor/requirement-editor.component';
-// import { AppRoutingModule } from './app-routing.module';
-// import { MessagesComponent } from './messages/messages.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { HttpClientModule } from '@angular/common/http';
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService } from './in-memory-data.service';
-// import { RequirementSearchComponent } from './requirement-search/requirement-search.component';
-
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/req', pathMatch: 'full'},
   { path: '', loadChildren: './requirements/requirements.module#RequirementsModule'},
-  ]
+  ];
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -45,9 +32,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     SharedModule,
     RequirementsModule,
-    // AppRoutingModule,
-    // HttpClientModule,
-    // ),
   ],
   providers: [],
   bootstrap: [AppComponent]

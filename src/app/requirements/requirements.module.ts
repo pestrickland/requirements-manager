@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
-import { RequirementsDashboardComponent } from './requirements-dashboard/requirements-dashboard.component';
-import { RequirementsListComponent } from './requirements-list/requirements-list.component';
-import { RequirementsDetailComponent } from './requirements-detail/requirements-detail.component';
+import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { RequirementsDashboardComponent } from './requirements-dashboard/requirements-dashboard.component';
+import { RequirementsDetailComponent } from './requirements-detail/requirements-detail.component';
+import { RequirementsListComponent } from './requirements-list/requirements-list.component';
 
 const routes: Routes = [
   { path: 'reqs', component: RequirementsListComponent },

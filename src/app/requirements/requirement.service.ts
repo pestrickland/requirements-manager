@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore,
-         AngularFirestoreCollection,
-         AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Requirement } from './requirement';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
+import { Requirement } from './requirement';
 
 
 @Injectable({
@@ -15,24 +13,24 @@ export class RequirementService {
 
   constructor(private afs: AngularFirestore) {
     this.requirementsCollection = this.afs.collection('requirements', ref =>
-      ref.orderBy('title', 'asc'))
+      ref.orderBy('title', 'asc'));
 
   }
 
   getRequirements() {
     return this.requirementsCollection.snapshotChanges()
-    .pipe(map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Requirement;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      });
-    }));
+      .pipe(map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Requirement;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
   }
 
   getRequirementData(id: string) {
-    this.requirementDoc = this.afs.doc<Requirement>(`requirements/${id}`)
-    return this.requirementDoc.valueChanges()
+    this.requirementDoc = this.afs.doc<Requirement>(`requirements/${id}`);
+    return this.requirementDoc.valueChanges();
   }
 
   create(data: Requirement) {
@@ -40,7 +38,7 @@ export class RequirementService {
   }
 
   getRequirement(id: string) {
-    return this.afs.doc<Requirement>(`requirements/${id}`)
+    return this.afs.doc<Requirement>(`requirements/${id}`);
   }
   update(id: string, formData) {
     return this.getRequirement(id).update(formData);
