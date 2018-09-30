@@ -1,5 +1,5 @@
 export class Definition {
-    id: string;
+    id?: string;
     definition: string;
     term: string;
     author?: string;

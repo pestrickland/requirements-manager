@@ -1,5 +1,5 @@
 export class Requirement {
-    id: string;
+    id?: string;
     description: string;
     phase?: string;
     type?: string;

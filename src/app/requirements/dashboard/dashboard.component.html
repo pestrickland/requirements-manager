@@ -1,0 +1,34 @@
+<section>
+    <mat-card routerLink="/reqs">
+        <mat-card-title>
+            Requirements
+        </mat-card-title>
+        <mat-card-content>
+            <p>All your requirements in one place</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <mat-icon>
+                arrow_forward
+            </mat-icon>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card routerLink="/defs">
+        <mat-card-title>
+            Definitions
+        </mat-card-title>
+        <mat-card-content>
+            Go to definitions
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <mat-icon>
+                arrow_forward
+            </mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</section>
+<section>
+    <mat-accordion>
+        <app-requirements-dashboard></app-requirements-dashboard>
+        <app-definitions-dashboard></app-definitions-dashboard>
+    </mat-accordion>
+</section>

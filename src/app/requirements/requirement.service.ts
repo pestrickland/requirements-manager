@@ -21,7 +21,6 @@ export class RequirementService {
       ref.orderBy('title', 'asc'));
     this.definitionsCollection = this.afs.collection('definitions', ref =>
       ref.orderBy('term', 'asc'));
-
   }
 
   getRequirements() {

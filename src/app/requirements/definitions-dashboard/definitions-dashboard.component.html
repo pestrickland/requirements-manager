@@ -1,0 +1,14 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            New definition
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+        <input matInput placeholder="Term" [(ngModel)]="term">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Definition" [(ngModel)]="definition" rows="5"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="createDefinition()" [disabled]="!definition || !term">{{buttonText}}</button>
+</mat-expansion-panel>
