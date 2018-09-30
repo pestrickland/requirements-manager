@@ -22,6 +22,9 @@ export class RequirementsDashboardComponent implements OnInit {
   id: string;
   image: string = null;
 
+  term: string;
+  definition: string;
+
   constructor(private auth: AuthService,
     private requirementService: RequirementService,
     private storage: AngularFireStorage) { }
@@ -47,6 +50,22 @@ export class RequirementsDashboardComponent implements OnInit {
     this.phase = '';
     this.type = '';
     this.buttonText = 'Requirement created';
+    setTimeout(() => this.buttonText = 'Create', 2000);
+  }
+
+  createDefinition() {
+    const data = {
+      author: this.auth.authState.displayName || this.auth.authState.email,
+      authorId: this.auth.currentUserId,
+      id: this.id,
+      term: this.term,
+      definition: this.definition,
+      created: new Date,
+    };
+    this.requirementService.createDef(data);
+    this.term = '';
+    this.definition = '';
+    this.buttonText = 'Definition created';
     setTimeout(() => this.buttonText = 'Create', 2000);
   }
 

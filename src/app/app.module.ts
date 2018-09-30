@@ -14,7 +14,7 @@ import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/req', pathMatch: 'full'},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: '', loadChildren: './requirements/requirements.module#RequirementsModule'},
   ];
 

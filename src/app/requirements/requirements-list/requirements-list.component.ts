@@ -16,8 +16,6 @@ export class RequirementsListComponent implements OnInit {
 
   ngOnInit() {
     this.requirements = this.requirementService.getRequirements();
-    console.log(this);
-
   }
 
   delete(id: string) {

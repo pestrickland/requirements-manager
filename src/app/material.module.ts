@@ -8,6 +8,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatChipsModule,
     MatDividerModule,
     MatExpansionModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatProgressBarModule,
@@ -28,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatChipsModule,
     MatDividerModule,
     MatExpansionModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatProgressBarModule,
