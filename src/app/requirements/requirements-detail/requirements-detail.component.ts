@@ -23,7 +23,6 @@ export class RequirementsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getRequirement();
-    console.log(this);
   }
 
   getRequirement() {

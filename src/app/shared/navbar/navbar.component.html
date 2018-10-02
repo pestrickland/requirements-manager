@@ -3,7 +3,7 @@
         <span routerLink="/dashboard">Requirements Manager</span>
         <span class="spacer"></span>
         <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
-            <button mat-raised-button color="accent" routerLink="/dashboard">Create a post</button>
+            <button mat-raised-button routerLink="/dashboard">Dashboard</button>
             <button mat-button (click)="auth.logout()">Log out</button>
         </div>
         <ng-template #showLogin>

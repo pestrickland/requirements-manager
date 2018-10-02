@@ -21,6 +21,7 @@ export class RequirementsDashboardComponent implements OnInit {
   downloadUrl: Observable<string>;
   id: string;
   image: string = null;
+  definedBy: Array<string>;
 
   constructor(private auth: AuthService,
     private requirementService: RequirementService,
@@ -39,6 +40,7 @@ export class RequirementsDashboardComponent implements OnInit {
       created: new Date,
       title: this.title,
       image: this.image,
+      definedBy: null,
     };
     this.requirementService.create(data);
     this.title = '';

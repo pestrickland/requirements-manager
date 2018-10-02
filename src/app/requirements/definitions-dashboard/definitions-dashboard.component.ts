@@ -13,6 +13,7 @@ export class DefinitionsDashboardComponent implements OnInit {
   definition: string;
   buttonText = 'Create';
   id: string;
+  defines: Array<string>;
 
   constructor(private auth: AuthService,
               private requirementService: RequirementService) { }
@@ -27,6 +28,7 @@ export class DefinitionsDashboardComponent implements OnInit {
       definition: this.definition,
       term: this.term,
       created: new Date,
+      defines: null,
     };
     this.requirementService.createDef(data);
     this.term = '';
