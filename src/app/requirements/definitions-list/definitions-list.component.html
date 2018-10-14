@@ -2,7 +2,7 @@
     <mat-card *ngFor="let definition of definitions | async">
         <mat-card-content routerLink="{{definition.id}}">
             <h2 *ngIf="definition.term">{{definition.term}}</h2>
-            <p *ngIf="definition.author"><small>Created by {{definition.author}} &bull; on {{definition.created.toDate() | date: "fullDate"}}</small></p>
+            <p *ngIf="definition.author"><small>Created by {{definition.author}} &bull; on {{definition.created.toDate() | date: "mediumDate"}}</small></p>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="auth.currentUserId === definition.authorId">
             <button mat-icon-button (click)="delete(definition.id)">

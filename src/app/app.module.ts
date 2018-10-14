@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeENGB from '@angular/common/locales/en-GB';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +14,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
+
+registerLocaleData(localeENGB);
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -33,7 +37,8 @@ const routes: Routes = [
     SharedModule,
     RequirementsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'en-GB'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
