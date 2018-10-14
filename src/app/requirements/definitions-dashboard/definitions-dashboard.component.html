@@ -12,3 +12,19 @@
     </mat-form-field>
     <button mat-raised-button color="accent" (click)="createDefinition()" [disabled]="!definition || !term">{{buttonText}}</button>
 </mat-expansion-panel>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Reactive Definition Form
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="definitionForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="Term" formControlName="term">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Definition" formControlName="definition"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!definitionForm.valid">Submit</button>
+    </form>
+</mat-expansion-panel>

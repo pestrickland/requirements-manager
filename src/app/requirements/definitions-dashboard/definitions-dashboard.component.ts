@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { RequirementService } from '../requirement.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-definitions-dashboard',
@@ -8,6 +9,11 @@ import { RequirementService } from '../requirement.service';
   styleUrls: ['./definitions-dashboard.component.scss']
 })
 export class DefinitionsDashboardComponent implements OnInit {
+
+  definitionForm = new FormGroup({
+    term: new FormControl(''),
+    definition: new FormControl(''),
+  });
 
   term: string;
   definition: string;
@@ -35,5 +41,9 @@ export class DefinitionsDashboardComponent implements OnInit {
     this.definition = '';
     this.buttonText = 'Definition created';
     setTimeout(() => this.buttonText = 'Create', 2000);
+  }
+
+  onSubmit() {
+    console.warn(this.definitionForm.value);
   }
 }
