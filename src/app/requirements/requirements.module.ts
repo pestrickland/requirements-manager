@@ -7,11 +7,13 @@ import { RequirementsListComponent } from './requirements-list/requirements-list
 import { DefinitionsListComponent } from './definitions-list/definitions-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefinitionsDashboardComponent } from './definitions-dashboard/definitions-dashboard.component';
+import { DefinitionsDetailComponent } from './definitions-detail/definitions-detail.component';
 
 const routes: Routes = [
   { path: 'reqs', component: RequirementsListComponent },
   { path: 'reqs/:id', component: RequirementsDetailComponent },
   { path: 'defs', component: DefinitionsListComponent },
+  { path: 'defs/:id', component: DefinitionsDetailComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];
 
@@ -21,6 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [RequirementsDashboardComponent, RequirementsListComponent,
-    RequirementsDetailComponent, DefinitionsListComponent, DashboardComponent, DefinitionsDashboardComponent]
+    RequirementsDetailComponent, DefinitionsListComponent, DashboardComponent, DefinitionsDashboardComponent, DefinitionsDetailComponent]
 })
 export class RequirementsModule { }

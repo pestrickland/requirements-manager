@@ -50,6 +50,11 @@ export class RequirementService {
     return this.requirementDoc.valueChanges();
   }
 
+  getDefinitionData(id: string) {
+    this.definitionDoc = this.afs.doc<Definition>(`definitions/${id}`);
+    return this.definitionDoc.valueChanges();
+  }
+
   create(data: Requirement) {
     this.requirementsCollection.add(data);
   }

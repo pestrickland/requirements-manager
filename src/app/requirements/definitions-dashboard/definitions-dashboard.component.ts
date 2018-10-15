@@ -44,6 +44,18 @@ export class DefinitionsDashboardComponent implements OnInit {
   }
 
   onSubmit() {
+    // this.createDefinition();
     console.warn(this.definitionForm.value);
+    const data = {
+      author: this.auth.authState.displayName || this.auth.authState.email,
+      authorId: this.auth.currentUserId,
+      definition: this.definitionForm.get('definition').value,
+      term: this.definitionForm.get('term').value,
+      created: new Date,
+      defines: null,
+    };
+    this.requirementService.createDef(data);
+
+    console.warn(data);
   }
 }
