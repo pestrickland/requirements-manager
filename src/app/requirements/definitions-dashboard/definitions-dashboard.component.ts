@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth.service';
 import { RequirementService } from '../requirement.service';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-definitions-dashboard',
@@ -11,8 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class DefinitionsDashboardComponent implements OnInit {
 
   definitionForm = new FormGroup({
-    term: new FormControl(''),
-    definition: new FormControl(''),
+    term: new FormControl('', Validators.required),
+    definition: new FormControl('', Validators.required),
   });
 
   term: string;

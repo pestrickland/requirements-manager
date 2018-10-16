@@ -1,15 +1,15 @@
 <mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>
-            Reactive Definition Form
+            New definition
         </mat-panel-title>
     </mat-expansion-panel-header>
     <form [formGroup]="definitionForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input matInput placeholder="Term" formControlName="term">
+            <input matInput placeholder="Term" formControlName="term" required>
         </mat-form-field>
         <mat-form-field>
-            <textarea matInput placeholder="Definition" formControlName="definition"></textarea>
+            <textarea matInput placeholder="Definition" formControlName="definition" required></textarea>
         </mat-form-field>
         <button mat-raised-button color="accent" type="submit" [disabled]="!definitionForm.valid">{{buttonText}}</button>
     </form>
