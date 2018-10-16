@@ -25,12 +25,12 @@ export class DefinitionsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getRequirement();
+    this.getDefinition();
     this.myControl = new FormControl();
 
   }
 
-  getRequirement() {
+  getDefinition() {
     const id = this.route.snapshot.paramMap.get('id');
     return this.requirementService.getDefinitionData(id).subscribe(data => this.definition = data);
   }

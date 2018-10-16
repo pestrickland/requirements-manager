@@ -1,3 +1,38 @@
-<p>
-  definitions-detail works!
-</p>
+<ng-container *ngIf="definition">
+    <div [hidden]="editing">
+        <mat-card>
+            <mat-card-title>{{definition.term}}</mat-card-title>
+            <mat-card-content>
+                <p>{{definition.definition}}</p>
+                <mat-chip-list>
+                    <!-- <mat-chip>{{definition.phase}}</mat-chip> -->
+                    <!-- <mat-chip>{{definition.type}}</mat-chip> -->
+                </mat-chip-list>
+            </mat-card-content>
+            <mat-card-footer>
+                <p>Created by {{definition.author}} &bull; {{definition.created.toDate() | date: 'mediumDate'}}</p>
+            </mat-card-footer>
+            <mat-card-actions align="end" *ngIf="auth.currentUserId === definition.authorId">
+                <button mat-icon-button (click)="editing=true">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="delete()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div [hidden]="!editing">
+        <mat-card>
+            <h2>Edit definition</h2>
+            <mat-form-field>
+                <input matInput placeholder="Term" [(ngModel)]="definition.term">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Definition" [(ngModel)]="definition.definition" rows="5"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="updateDefinition()">Save</button>
+            <button mat-button (click)="editing=false">Cancel</button>
+        </mat-card>
+    </div>
+</ng-container>
