@@ -17,7 +17,7 @@ export class DefinitionsDashboardComponent implements OnInit {
 
   term: string;
   definition: string;
-  buttonText = 'Create';
+  buttonText = 'Create definition';
   id: string;
   defines: Array<string>;
 
@@ -44,7 +44,6 @@ export class DefinitionsDashboardComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.createDefinition();
     console.warn(this.definitionForm.value);
     const data = {
       author: this.auth.authState.displayName || this.auth.authState.email,
@@ -55,7 +54,8 @@ export class DefinitionsDashboardComponent implements OnInit {
       defines: null,
     };
     this.requirementService.createDef(data);
-
-    console.warn(data);
+    this.definitionForm.setValue({term: '', definition: ''});
+    this.buttonText = 'Definition created';
+    setTimeout(() => this.buttonText = 'Create', 2000);
   }
 }
