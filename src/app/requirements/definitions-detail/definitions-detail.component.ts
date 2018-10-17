@@ -15,7 +15,6 @@ export class DefinitionsDetailComponent implements OnInit {
 
   definition: Definition;
   editing = false;
-  myControl: FormControl;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +25,6 @@ export class DefinitionsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getDefinition();
-    this.myControl = new FormControl();
 
   }
 
@@ -34,4 +32,23 @@ export class DefinitionsDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     return this.requirementService.getDefinitionData(id).subscribe(data => this.definition = data);
   }
+
+  updateDefinition() {
+    const formData = {
+      term: this.definition.term,
+      definition: this.definition.definition,
+    };
+    const id = this.route.snapshot.paramMap.get('id');
+    this.requirementService.updateDefinition(id, formData);
+    this.editing = false;
+  }
+
+  delete() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.requirementService.deleteDefinition(id);
+    this.router.navigate(['/defs']);
+  }
+
+
 }
+
