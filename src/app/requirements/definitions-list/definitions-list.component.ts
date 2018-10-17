@@ -19,7 +19,7 @@ export class DefinitionsListComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.requirementService.deleteDef(id);
+    this.requirementService.deleteDefinition(id);
   }
 
 }
