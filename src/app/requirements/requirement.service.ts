@@ -75,11 +75,15 @@ export class RequirementService {
     return this.getRequirement(id).update(formData);
   }
 
+  updateDefinition(id: string, formData) {
+    return this.getDefinition(id).update(formData);
+  }
+
   delete(id: string) {
     return this.getRequirement(id).delete();
   }
 
-  deleteDef(id: string) {
+  deleteDefinition(id: string) {
     return this.getDefinition(id).delete();
   }
 }
