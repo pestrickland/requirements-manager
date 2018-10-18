@@ -13,17 +13,20 @@
             <img [src]="image || '//:0' ">
         </div>
     </div>
-    <mat-form-field>
-        <input matInput placeholder="Requirement Title" [(ngModel)]="title">
-    </mat-form-field>
-    <mat-form-field>
-        <textarea matInput placeholder="Requirement Description" [(ngModel)]="description" rows="5"></textarea>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Phase" [(ngModel)]="phase">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Type" [(ngModel)]="type">
-    </mat-form-field>
-    <button mat-raised-button color="accent" (click)="createRequirement()" [disabled]="!description">{{buttonText}}</button>
+    <form [formGroup]="requirementForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="Requirement Title" formControlName="title" required>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Requirement Description" formControlName="description" rows="5" required></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Phase" formControlName="phase" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Type" formControlName="type" required>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!requirementForm.valid">{{buttonText}}</button>
+    </form>
+
 </mat-expansion-panel>
