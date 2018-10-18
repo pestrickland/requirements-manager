@@ -27,24 +27,7 @@ export class DefinitionsDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  createDefinition() {
-    const data = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
-      definition: this.definition,
-      term: this.term,
-      created: new Date,
-      defines: null,
-    };
-    this.requirementService.createDef(data);
-    this.term = '';
-    this.definition = '';
-    this.buttonText = 'Definition created';
-    setTimeout(() => this.buttonText = 'Create', 2000);
-  }
-
   onSubmit() {
-    console.warn(this.definitionForm.value);
     const data = {
       author: this.auth.authState.displayName || this.auth.authState.email,
       authorId: this.auth.currentUserId,
