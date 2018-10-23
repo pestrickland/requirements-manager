@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth.service';
 import { RequirementService } from '../requirement.service';
 
@@ -10,9 +10,9 @@ import { RequirementService } from '../requirement.service';
 })
 export class DefinitionsDashboardComponent implements OnInit {
 
-  definitionForm = new FormGroup({
-    term: new FormControl('', Validators.required),
-    definition: new FormControl('', Validators.required),
+  definitionForm = this.fb.group({
+    term: ['', Validators.required],
+    definition: ['', Validators.required],
   });
 
   term: string;
@@ -22,7 +22,8 @@ export class DefinitionsDashboardComponent implements OnInit {
   defines: Array<string>;
 
   constructor(private auth: AuthService,
-              private requirementService: RequirementService) { }
+              private requirementService: RequirementService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
   }
