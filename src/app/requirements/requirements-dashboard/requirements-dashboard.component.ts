@@ -78,7 +78,7 @@ export class RequirementsDashboardComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(formData: any, formDirective) {
     const data = {
       author: this.auth.authState.displayName || this.auth.authState.email,
       authorId: this.auth.currentUserId,
@@ -93,6 +93,8 @@ export class RequirementsDashboardComponent implements OnInit {
     this.requirementForm.setValue({ title: '', description: '', phase: '', type: '' });
     this.buttonText = 'Requirement created';
     setTimeout(() => this.buttonText = 'Create', 2000);
+    formDirective.resetForm();
+    this.requirementForm.reset();
   }
 
 

@@ -28,7 +28,7 @@ export class DefinitionsDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmit(formData: any, formDirective) {
     const data = {
       author: this.auth.authState.displayName || this.auth.authState.email,
       authorId: this.auth.currentUserId,
@@ -41,5 +41,7 @@ export class DefinitionsDashboardComponent implements OnInit {
     this.definitionForm.setValue({term: '', definition: ''});
     this.buttonText = 'Definition created';
     setTimeout(() => this.buttonText = 'Create', 2000);
+    formDirective.resetForm();
+    this.definitionForm.reset();
   }
 }

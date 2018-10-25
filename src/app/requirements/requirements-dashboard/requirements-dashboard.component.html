@@ -13,7 +13,7 @@
             <img [src]="image || '//:0' ">
         </div>
     </div>
-    <form [formGroup]="requirementForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="requirementForm" #formDirective="ngForm" (ngSubmit)="onSubmit(requirementForm, formDirective)">
         <mat-form-field>
             <input matInput placeholder="Requirement Title" formControlName="title" required>
         </mat-form-field>
