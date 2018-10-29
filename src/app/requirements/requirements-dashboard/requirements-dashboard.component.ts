@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from 'angularfire2/storage';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { AuthService } from '../../core/auth.service';
@@ -11,6 +13,13 @@ import { RequirementService } from '../requirement.service';
   styleUrls: ['./requirements-dashboard.component.scss']
 })
 export class RequirementsDashboardComponent implements OnInit {
+
+  requirementForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    type: new FormControl('', Validators.required),
+    phase: new FormControl('', Validators.required)
+  });
 
   description: string;
   type: string;
@@ -68,5 +77,25 @@ export class RequirementsDashboardComponent implements OnInit {
         .subscribe();
     }
   }
+
+  onSubmit(formData: any, formDirective) {
+    const data = {
+      author: this.auth.authState.displayName || this.auth.authState.email,
+      authorId: this.auth.currentUserId,
+      title: this.requirementForm.get('title').value,
+      description: this.requirementForm.get('description').value,
+      phase: this.requirementForm.get('phase').value,
+      type: this.requirementForm.get('type').value,
+      created: new Date,
+      definedBy: null,
+    };
+    this.requirementService.create(data);
+    this.requirementForm.setValue({ title: '', description: '', phase: '', type: '' });
+    this.buttonText = 'Requirement created';
+    setTimeout(() => this.buttonText = 'Create', 2000);
+    formDirective.resetForm();
+    this.requirementForm.reset();
+  }
+
 
 }

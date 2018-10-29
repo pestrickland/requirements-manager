@@ -4,7 +4,7 @@
             New definition
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <form [formGroup]="definitionForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="definitionForm" #formDirective="ngForm" (ngSubmit)="onSubmit(definitionForm, formDirective)">
         <mat-form-field>
             <input matInput placeholder="Term" formControlName="term" required>
         </mat-form-field>
