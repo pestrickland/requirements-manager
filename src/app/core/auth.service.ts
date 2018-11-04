@@ -7,14 +7,8 @@ import { switchMap, first } from 'rxjs/operators';
 import { auth } from 'firebase/app';
 import { AngularFireStorageReference } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { User } from './user';
 
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  demoAttr?: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +16,7 @@ interface User {
 export class AuthService {
 
   // authState: any = null;
-  user$: Observable<any>;
+  user$: Observable<User>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -62,7 +56,10 @@ export class AuthService {
       uid,
       email,
       displayName,
-      photoURL
+      photoURL,
+      roles: {
+        subscriber: true
+      }
     };
 
     return userRef.set(data, { merge: true });
