@@ -32,17 +32,21 @@ export class RequirementsDashboardComponent implements OnInit {
   image: string = null;
   definedBy: Array<string>;
 
+  user: any;
+
   constructor(private auth: AuthService,
     private requirementService: RequirementService,
-    private storage: AngularFireStorage) { }
+    private storage: AngularFireStorage) {
+      this.user = this.auth.getUser();
+    }
 
   ngOnInit() {
   }
 
   createRequirement() {
     const data = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
+      author: this.user.displayName || this.user.email,
+      authorId: this.user.uid,
       description: this.description,
       type: this.type,
       phase: this.phase,
@@ -80,8 +84,8 @@ export class RequirementsDashboardComponent implements OnInit {
 
   onSubmit(formData: any, formDirective) {
     const data = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
+      author: this.user.displayName || this.user.email,
+      authorId: this.user.uid,
       title: this.requirementForm.get('title').value,
       description: this.requirementForm.get('description').value,
       phase: this.requirementForm.get('phase').value,

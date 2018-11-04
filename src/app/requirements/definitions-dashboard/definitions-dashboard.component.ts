@@ -21,17 +21,21 @@ export class DefinitionsDashboardComponent implements OnInit {
   id: string;
   defines: Array<string>;
 
+  user: any;
+
   constructor(private auth: AuthService,
               private requirementService: RequirementService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder) {
+                this.user = this.auth.getUser();
+               }
 
   ngOnInit() {
   }
 
   onSubmit(formData: any, formDirective) {
     const data = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
+      author: this.user.displayName || this.user.email,
+      authorId: this.user.uid,
       definition: this.definitionForm.get('definition').value,
       term: this.definitionForm.get('term').value,
       created: new Date,
