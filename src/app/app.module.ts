@@ -8,8 +8,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { RequirementsModule } from './requirements/requirements.module';
@@ -17,13 +17,8 @@ import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeENGB);
 
-const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  { path: '', loadChildren: './requirements/requirements.module#RequirementsModule'},
-  ];
-
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [AppComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'Requirements Manager'),
     AngularFireAuthModule,
@@ -33,12 +28,12 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CoreModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     SharedModule,
     RequirementsModule,
+    AppRoutingModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'en-GB'}],
+    { provide: LOCALE_ID, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
