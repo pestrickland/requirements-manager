@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth.service';
-import { RequirementService } from '../requirement.service';
+import { RequirementService } from '../../requirements/requirement.service';
 
 @Component({
   selector: 'app-definitions-dashboard',

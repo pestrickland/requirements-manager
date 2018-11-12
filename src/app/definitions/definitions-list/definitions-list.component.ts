@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
 import { Definition } from '../definition';
-import { RequirementService } from '../requirement.service';
+import { RequirementService } from '../../requirements/requirement.service';
 
 @Component({
   selector: 'app-definition-list',

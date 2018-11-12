@@ -1,0 +1,86 @@
+<h1 class="mat-h1">Welcome</h1>
+<h2 class="mat-h2">Introducing Requirements Manager</h2>
+<!-- <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell"></div>
+        <div class="mdc-layout-grid__cell"></div>
+        <div class="mdc-layout-grid__cell"></div>
+    </div>
+</div> -->
+<section>
+    <!-- <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <h2>
+                    Current project
+                </h2>
+            </mat-expansion-panel-header>
+            <mat-card routerLink="/reqs">
+                <mat-card-title>
+                    Requirements
+                </mat-card-title>
+                <mat-card-content>
+                    <p>All your requirements in one place</p>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <mat-icon>
+                        arrow_forward
+                    </mat-icon>
+                </mat-card-actions>
+            </mat-card>
+            <mat-card routerLink="/defs">
+                <mat-card-title>
+                    Definitions
+                </mat-card-title>
+                <mat-card-content>
+                    Go to definitions
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <mat-icon>
+                        arrow_forward
+                    </mat-icon>
+                </mat-card-actions>
+            </mat-card>
+            <mat-accordion>
+                <app-requirements-dashboard></app-requirements-dashboard>
+                <app-definitions-dashboard></app-definitions-dashboard>
+            </mat-accordion>
+        </mat-expansion-panel> -->
+    <p class="body-1">Requirements Manager is a tool
+        that helps you manage requirements, and start your projects properly.</p>
+    <p>
+        Choose which project you want to work on, or start a new project.
+    </p>
+    <mat-card *ngFor="let project of projects$ | async">
+        <mat-card-header>
+            <!-- <mat-card-title> -->
+                <h2>
+                    {{project.title}}
+                </h2>
+            <!-- </mat-card-title> -->
+            <!-- <mat-card-subtitle>subtitle</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{project.title}} by {{project.owner}}
+            </p>
+            <a routerLink="/projects/{{project.id}}">Go to project</a>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-fab (click)="selectProject(project)">
+                <mat-icon>notes</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <!-- <mat-card-title>Start a new project</mat-card-title> -->
+            <!-- <mat-card-subtitle>subtitle</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+            Get started with a new project.
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-fab><mat-icon>add</mat-icon></button>
+        </mat-card-actions>
+    </mat-card>
+</section>

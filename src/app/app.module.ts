@@ -12,13 +12,17 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeENGB);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent
+  ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'Requirements Manager'),
     AngularFireAuthModule,

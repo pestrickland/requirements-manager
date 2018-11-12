@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Requirement } from './requirement';
-import { Definition } from './definition';
-
+import { Definition } from '../definitions/definition';
 
 
 @Injectable({

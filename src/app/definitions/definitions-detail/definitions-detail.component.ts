@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { Definition } from '../definition';
-import { RequirementService } from '../requirement.service';
+import { RequirementService } from '../../requirements/requirement.service';
 
 
 @Component({
