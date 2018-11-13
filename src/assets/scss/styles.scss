@@ -4,7 +4,8 @@
 @import 'normalize/variables';
 @import 'normalize/vertical-rhythm';
 @import 'normalize/normalize-mixin';
-@import "theme";
+@import 'theme';
+@import '~@angular-mdc/theme/material';
 body {
     margin: 0;
 }
