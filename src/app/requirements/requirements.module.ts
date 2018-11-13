@@ -5,11 +5,6 @@ import { RequirementsDetailComponent } from './requirements-detail/requirements-
 import { RequirementsListComponent } from './requirements-list/requirements-list.component';
 import { RequirementsRoutingModule } from './requirements-routing.module';
 
-// const routes: Routes = [
-//   { path: 'reqs', component: RequirementsListComponent },
-//   { path: 'reqs/:id', component: RequirementsDetailComponent },
-// ];
-
 @NgModule({
   imports: [
     SharedModule,
