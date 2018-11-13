@@ -5,8 +5,6 @@ import { Project } from '../../projects/project';
 import { ProjectService } from '../../projects/project.service';
 
 
-// import { layout-grid } from '@angular-mdc/theme';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

@@ -8,12 +8,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { DefinitionsModule } from './definitions/definitions.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsModule } from './projects/projects.module';
 import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
