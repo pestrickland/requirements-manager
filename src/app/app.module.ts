@@ -15,6 +15,9 @@ import { CoreModule } from './core/core.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
+import { ProjectsRoutingModule } from './projects/projects-routing.module';
+import { DefinitionsModule } from './definitions/definitions.module';
+import { ProjectsModule } from './projects/projects.module';
 
 registerLocaleData(localeENGB);
 
@@ -34,6 +37,9 @@ registerLocaleData(localeENGB);
     FormsModule,
     SharedModule,
     RequirementsModule,
+    DefinitionsModule,
+    ProjectsModule,
+    ProjectsRoutingModule,
     AppRoutingModule
   ],
   providers: [
