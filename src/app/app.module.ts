@@ -38,9 +38,9 @@ registerLocaleData(localeENGB);
     CoreModule,
     FormsModule,
     SharedModule,
+    ProjectsModule,
     RequirementsModule,
     DefinitionsModule,
-    ProjectsModule,
     AppRoutingModule
   ],
   providers: [
