@@ -6,7 +6,7 @@ import { SharedModule } from './shared/shared.module';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'projects/:id', loadChildren: './projects/projects.module#ProjectDetailComponent' },
+  { path: 'projects', loadChildren: './projects/projects.module#ProjectsModule' },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
