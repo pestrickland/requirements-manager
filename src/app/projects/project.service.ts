@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore 
 import { Project } from './project';
 import { map } from 'rxjs/operators';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class ProjectService {
     this.projectsCollection = afs.collection('projects');
   }
 
-  getProjects() {
+  getProjects(): Observable<Project[]> {
+    // Get data for all projects.
     return this.projectsCollection.snapshotChanges()
     .pipe(map(actions => {
       return actions.map(snap => {
@@ -27,9 +29,11 @@ export class ProjectService {
     }));
   }
 
-  // getProjects() {
-    // return this.projectsCollection.valueChanges();
-  // }
+  getProject(id: string) {
+    return this.getProjects().pipe(
+      map((projects: Project[]) => projects.find(project => project.id === id))
+      );
+  }
 
   // This doesn't actually do anything useful. We already get the project details by iterating over the
   // projectsCollection and returning valueChanges(). This should actually enable us to progress to

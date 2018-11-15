@@ -1,3 +1,6 @@
-<p>
-  projects-list works!
-</p>
+<h1 class="mat-h1">Your Projects</h1>
+<ul>
+<li *ngFor="let project of projects$ | async">
+  <a [routerLink]="[ '/project', project.id ]">{{project.title}}</a></li>
+</ul>
+<router-outlet></router-outlet>
