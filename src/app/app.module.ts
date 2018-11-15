@@ -16,10 +16,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { DefinitionsModule } from './definitions/definitions.module';
-import { ProjectsModule } from './projects/projects.module';
-import { RequirementsModule } from './requirements/requirements.module';
+// import { DefinitionsModule } from './definitions/definitions.module';
+// import { ProjectsModule } from './projects/projects.module';
+// import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
+import { Router } from '@angular/router';
 
 registerLocaleData(localeENGB);
 
@@ -38,13 +39,21 @@ registerLocaleData(localeENGB);
     CoreModule,
     FormsModule,
     SharedModule,
-    ProjectsModule,
-    RequirementsModule,
-    DefinitionsModule,
+    // ProjectsModule,
+    // RequirementsModule,
+    // DefinitionsModule,
     AppRoutingModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(router: Router) {
+      // Use a custom replacer to display function names in the route configs
+      const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+      console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+    }
+}
+
