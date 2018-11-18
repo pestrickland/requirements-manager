@@ -16,9 +16,9 @@ export class RequirementService {
   definitionDoc: AngularFirestoreDocument<Definition>;
 
   constructor(private afs: AngularFirestore) {
-    this.requirementsCollection = this.afs.collection('requirements', ref =>
+    this.requirementsCollection = this.afs.collection('projects/DeskDefender/requirements', ref =>
       ref.orderBy('title', 'asc'));
-    this.definitionsCollection = this.afs.collection('definitions', ref =>
+    this.definitionsCollection = this.afs.collection('projects/DeskDefender/definitions', ref =>
       ref.orderBy('term', 'asc'));
   }
 
