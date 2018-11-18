@@ -17,19 +17,19 @@
             <p>
                 Created by {{project.owner}}
             </p>
-            <!-- <a routerLink="/projects/{{project.id}}">Go to project</a> -->
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-fab (click)="selectProject(project)">
+            <button mat-fab [routerLink]="['/projects', project.id]">
                 <mat-icon>notes</mat-icon>
             </button>
         </mat-card-actions>
     </mat-card>
     <mat-card>
         <mat-card-header>
+            <h2>New project</h2>
         </mat-card-header>
         <mat-card-content>
-            Get started with a new project.
+            Start a new project.
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-fab>

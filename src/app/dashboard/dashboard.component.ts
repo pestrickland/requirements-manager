@@ -16,20 +16,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private auth: AuthService) {
-  }
+    private auth: AuthService,
+  ) {}
 
   ngOnInit() {
     // Get list of projects.
     this.projects$ = this.projectService.getProjects();
   }
-
-  // Go to project.
-  selectProject(project) {
-    // Use currentProject to route subsequent queries through correct URL? Can the router do this?
-    this.currentProject = this.projectService.loadProjectData(project);
-  }
-
-  // Get current project.
-
 }

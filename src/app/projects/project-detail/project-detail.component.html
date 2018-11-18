@@ -1,3 +1,5 @@
-<p>
-  project-detail works!
-</p>
+<div *ngIf="project$ | async as project">
+    <h2>{{project.title}} -- Summary</h2>
+    <h3>Project: {{project | json}}</h3>
+</div>
+<router-outlet></router-outlet>
