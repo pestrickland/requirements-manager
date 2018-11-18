@@ -16,11 +16,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-// import { DefinitionsModule } from './definitions/definitions.module';
-// import { ProjectsModule } from './projects/projects.module';
-// import { RequirementsModule } from './requirements/requirements.module';
 import { SharedModule } from './shared/shared.module';
 import { Router } from '@angular/router';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 registerLocaleData(localeENGB);
 
@@ -38,10 +36,8 @@ registerLocaleData(localeENGB);
     BrowserAnimationsModule,
     CoreModule,
     FormsModule,
+    DashboardModule,
     SharedModule,
-    // ProjectsModule,
-    // RequirementsModule,
-    // DefinitionsModule,
     AppRoutingModule
   ],
   providers: [

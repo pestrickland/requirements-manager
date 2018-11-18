@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth.service';
-import { Project } from '../../projects/project';
-import { ProjectService } from '../../projects/project.service';
+import { AuthService } from '../core/auth.service';
+import { Project } from '../projects/project';
+import { ProjectService } from '../projects/project.service';
 
 
 @Component({
